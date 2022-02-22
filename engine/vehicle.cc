@@ -3,7 +3,7 @@
 #include "engine.hh"
 
 Vehicle::Vehicle(const std::string& model, int fuel)
-    : engine_(fuel)
+    : engine_(Engine(fuel))
     , model_(model)
 {}
 
