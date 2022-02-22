@@ -42,6 +42,7 @@ std::vector<std::vector<std::string>> parse_csv(const std::string& file_name)
             }
             word.push_back(token);
         }
+
         if (line[line.length() - 1] == ',')
         {
             if (line_nb == 1)
@@ -52,7 +53,7 @@ std::vector<std::vector<std::string>> parse_csv(const std::string& file_name)
             {
                 count++;
             }
-            word.push_back(" ");
+            word.push_back("");
         }
 
         if (count != ref && line_nb != 1)
