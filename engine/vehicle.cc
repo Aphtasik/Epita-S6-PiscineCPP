@@ -3,8 +3,8 @@
 #include "engine.hh"
 
 Vehicle::Vehicle(const std::string& model, int fuel)
-    : engine_(Engine(fuel))
-    , model_(model)
+    : model_(model)
+    , engine_(Engine(fuel))
 {}
 
 bool Vehicle::start()
