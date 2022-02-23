@@ -21,4 +21,3 @@ void Soldier::scream() const
 {
     std::cout << scream_ << "\n";
 }
-
