@@ -1,8 +1,8 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 
 template <class T>
 bool palindrome(std::vector<T> v)
@@ -14,6 +14,6 @@ bool palindrome(std::vector<T> v)
     {
         if (*left != *right)
             return false;
-    } 
+    }
     return true;
 }
