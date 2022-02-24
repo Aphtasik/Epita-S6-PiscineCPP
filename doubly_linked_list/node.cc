@@ -35,4 +35,3 @@ void Node::prev_set(std::shared_ptr<Node> prev)
 {
     prev_ = prev;
 }
-

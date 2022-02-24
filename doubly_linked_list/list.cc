@@ -17,7 +17,11 @@ void List::push_front(int i)
 
     first_ = node;
     if (nb_elts_ == 1)
+    {
         last_ = node;
+        return;
+    }
+    node->next_get()->prev_set(node);
 }
 
 void List::push_back(int i)
@@ -28,7 +32,11 @@ void List::push_back(int i)
 
     last_ = node;
     if (nb_elts_ == 1)
+    {
         first_ = node;
+        return;
+    }
+    node->prev_get()->next_set(node);
 }
 
 std::optional<int> List::pop_front()
