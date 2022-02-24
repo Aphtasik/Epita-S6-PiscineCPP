@@ -23,7 +23,7 @@ bool Dico::add_word(const std::string& s)
 
 bool Dico::remove_word(const std::string& s)
 {
-    if (dico_.find(s) != dico_.end())
+    if (dico_.find(s) == dico_.end())
         return false;
     dico_.erase(s);
     return true;
