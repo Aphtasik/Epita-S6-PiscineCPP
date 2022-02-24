@@ -68,7 +68,8 @@ int min(int x, int y, int z)
     return std::min(std::min(x, y), z);
 }
 
-unsigned levenshtein_aux(const std::string& str1, const std::string& str2, int m, int n)
+unsigned levenshtein_aux(const std::string& str1, const std::string& str2,
+                         int m, int n)
 {
     // If first string is empty, the only option is to
     // insert all characters of second string into first
@@ -94,7 +95,7 @@ unsigned levenshtein_aux(const std::string& str1, const std::string& str2, int m
         + min(levenshtein_aux(str1, str2, m, n - 1), // Insert
               levenshtein_aux(str1, str2, m - 1, n), // Remove
               levenshtein_aux(str1, str2, m - 1,
-                          n - 1) // Replace
+                              n - 1) // Replace
         );
 }
 
@@ -106,6 +107,17 @@ unsigned levenshtein(const std::string& s1, const std::string& s2)
 std::set<std::string> Dico::find_similar(const std::string& req,
                                          unsigned size) const
 {
+    if (size == 0)
+    {
+        std::set<std::string> prefix_list;
+        for (auto word : dico_)
+        {
+            if (word == req)
+                prefix_list.insert(word);
+        }
+        return prefix_list;
+    }
+
     std::set<std::string> prefix_list;
     for (auto word : dico_)
     {
