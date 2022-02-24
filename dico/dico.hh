@@ -1,7 +1,10 @@
 #pragma once
 
+#include <algorithm>
+#include <iostream>
 #include <set>
 #include <string>
+#include <vector>
 
 unsigned levenshtein(const std::string& s1, const std::string& s2);
 
@@ -26,7 +29,7 @@ public:
                                        unsigned size) const;
 
 private:
-    std::vector<std::string> dico_;
+    std::set<std::string> dico_;
 };
 
 #include "dico.hxx"
