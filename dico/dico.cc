@@ -45,8 +45,8 @@ std::set<std::string> Dico::find_suffix(const std::string& req) const
     std::set<std::string> prefix_list;
     for (auto word : dico_)
     {
-        if (req.size() < word.size()
-            && std::equal(req.rbegin(), req.rend(), word.rbegin()))
+        if (word.size() >= req.size()
+            && word.compare(word.size() - req.size(), req.size(), req) == 0)
             prefix_list.insert(word);
     }
     return prefix_list;

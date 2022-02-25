@@ -25,28 +25,28 @@ public:
     ** and return the stack reference for chaining
     */
     Stack<T>& push(const T& item);
-    /*FIXME*/ operator+= /*FIXME*/;
-    /*FIXME*/ operator<< /*FIXME*/;
+    Stack<T>& operator+=(const T& item);
+    Stack<T>& operator<< (const T& item);
 
     /**
     ** Pop an element from the stack, return a copy of it
     */
-    /*FIXME*/ pop();
-    /*FIXME*/ operator--();
+    T pop();
+    T operator--();
 
     /**
     ** Return the i-th element of the stack starting from the top of
     ** the stack and following a zero-based indexing
     ** for exemple stack[0] should return the top element value.
     */
-    /*FIXME*/ operator[](size_t i);
+    T operator[](size_t i);
 
     /**
     ** Compare two stacks, returns true if all elements
     ** from each stack have the same value and if the stacks
     ** have the same max sizes
     */
-    /*FIXME*/ operator==(/*FIXME*/);
+    bool operator==(Stack s1);
 
     /**
     ** Print *this on the stream s
@@ -77,7 +77,8 @@ public:
     size_t max_size() const;
 
 private:
-    /*FIXME*/
+    std::vector<T> items_;
+    size_t max_size_;
 };
 
 /**
