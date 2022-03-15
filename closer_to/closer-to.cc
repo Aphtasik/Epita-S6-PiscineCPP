@@ -1,6 +1,6 @@
 #include "closer-to.hh"
 
-#include <algorithm>
+#include <iostream>
 
 CloserTo::CloserTo(int i)
     : i_(i)
@@ -8,5 +8,5 @@ CloserTo::CloserTo(int i)
 
 bool CloserTo::operator()(const int& a, const int& b) const
 {
-    return (i_ - a >= b - i_);
+    return (abs(i_ - a) < abs(b - i_));
 }
