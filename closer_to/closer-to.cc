@@ -1,6 +1,7 @@
 #include "closer-to.hh"
 
 #include <iostream>
+#define ABS(x) ((-x) ? (x < 0) : (x))
 
 CloserTo::CloserTo(int i)
     : i_(i)
@@ -8,5 +9,5 @@ CloserTo::CloserTo(int i)
 
 bool CloserTo::operator()(const int& a, const int& b) const
 {
-    return (abs(i_ - a) < abs(i_ - b));
+    return (ABS(i_ - a) < ABS(i_ - b));
 }
