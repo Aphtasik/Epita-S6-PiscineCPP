@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cmath>
-
 template <int n>
 constexpr bool is_prime()
 {
@@ -14,4 +12,3 @@ constexpr bool is_prime()
 
     return true;
 }
-
