@@ -32,12 +32,27 @@ namespace termcolor
     class my_ostream
     {
     public:
-        // FIXME
+        my_ostream(int code, std::ostream& out);
+        ~my_ostream();
 
-    private:
-        // FIXME
+        std::ostream& out;
+        std::string suffix = "m";
+        std::string prefix = "\x1B[";
+        int color;
     };
 
     my_ostream operator<<(std::ostream& out, background value);
     my_ostream operator<<(std::ostream& out, foreground value);
+    my_ostream&& operator<<(my_ostream&& ost, foreground);
+    my_ostream&& operator<<(my_ostream&& ost, background);
+    my_ostream&& operator<<(my_ostream&& ost,
+                            std::ostream& (*fn)(std::ostream&));
+
+    template <typename T>
+    my_ostream&& operator<<(my_ostream&& ost, T rhs)
+    {
+        ost.out << rhs;
+        return std::move(ost);
+    }
+
 } // namespace termcolor

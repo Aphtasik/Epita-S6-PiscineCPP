@@ -1,5 +1,4 @@
 #include "termcolor.hh"
-
 int main()
 {
     std::cout << termcolor::foreground::red << "nice,"
