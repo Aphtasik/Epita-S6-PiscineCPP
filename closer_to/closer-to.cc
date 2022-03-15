@@ -8,5 +8,5 @@ CloserTo::CloserTo(int i)
 
 bool CloserTo::operator()(const int& a, const int& b) const
 {
-    return (abs(i_ - a) < abs(b - i_));
+    return (abs(i_ - a) < abs(i_ - b));
 }
