@@ -11,9 +11,9 @@ namespace visitor
     {
         auto operation = e.value_get();
         e.lhs_get()->accept(*this);
+        int x = value_;
         e.rhs_get()->accept(*this);
 
-        int x = value_;
         switch (operation.at(0))
         {
         case '+':
