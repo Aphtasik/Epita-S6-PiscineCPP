@@ -1,13 +1,16 @@
 #include "closer-to.hh"
 
 #include <iostream>
-#define ABS(x) ((-x) ? (x < 0) : (x))
+#define F(x) ((-x) ? (x < 0) : (x))
 
 CloserTo::CloserTo(int i)
-    : i_(i)
-{}
+{
+    this->i_ = i;
+}
 
 bool CloserTo::operator()(const int& a, const int& b) const
 {
-    return (ABS(i_ - a) < ABS(i_ - b));
+    int na = F(i_ - a);
+    int nb = F(i_ - b);
+    return (na < nb);
 }
