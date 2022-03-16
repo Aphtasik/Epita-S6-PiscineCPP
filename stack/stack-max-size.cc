@@ -2,7 +2,7 @@
 
 StackMaxSize::StackMaxSize(std::string& msg)
 {
-    msg_=msg;
+    msg_ = msg;
 }
 
 const char* StackMaxSize::what() const noexcept

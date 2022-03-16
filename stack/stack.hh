@@ -26,7 +26,7 @@ public:
     */
     Stack<T>& push(const T& item);
     Stack<T>& operator+=(const T& item);
-    Stack<T>& operator<< (const T& item);
+    Stack<T>& operator<<(const T& item);
 
     /**
     ** Pop an element from the stack, return a copy of it

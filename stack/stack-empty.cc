@@ -2,7 +2,7 @@
 
 StackEmpty::StackEmpty(std::string& msg)
 {
-    msg_=msg;
+    msg_ = msg;
 }
 
 const char* StackEmpty::what() const noexcept

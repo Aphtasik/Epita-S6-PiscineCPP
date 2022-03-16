@@ -1,17 +1,16 @@
-#include "stack-empty.hh"
-#include "stack-max-size.hh"
-#include "stack-creation-failed.hh"
-#include "stack.hh"
-
 #include <iostream>
 #include <ostream>
+
+#include "stack-creation-failed.hh"
+#include "stack-empty.hh"
+#include "stack-max-size.hh"
+#include "stack.hh"
 
 template <class T>
 Stack<T>::Stack(size_t max_size)
 {
-    max_size_=max_size;
+    max_size_ = max_size;
 }
-
 
 template <class T>
 Stack<T>& Stack<T>::push(const T& item)
@@ -44,7 +43,7 @@ Stack<T>& Stack<T>::operator+=(const T& item)
 }
 
 template <class T>
-Stack<T>& Stack<T>::operator<< (const T& item)
+Stack<T>& Stack<T>::operator<<(const T& item)
 {
     try
     {
@@ -128,28 +127,28 @@ std::ostream& Stack<T>::print(std::ostream& s) const
     s << items_.at(0);
 }
 
-template <class T>
-const_iterator Stack<T>::begin() const
+template <typename T>
+typename std::vector<T>::const_reverse_iterator Stack<T>::begin() const
 {
-    
+    return this->elems_.rbegin();
 }
 
-template <class T>
-iterator Stack<T>::begin()
+template <typename T>
+typename std::vector<T>::reverse_iterator Stack<T>::begin()
 {
-
+    return this->elems_.rbegin();
 }
 
-template <class T>
-const_iterator Stack<T>::end() const
+template <typename T>
+typename std::vector<T>::const_reverse_iterator Stack<T>::end() const
 {
-
+    return this->elems_.rend();
 }
 
-template <class T>
-iterator Stack<T>::end()
+template <typename T>
+typename std::vector<T>::reverse_iterator Stack<T>::end()
 {
-
+    return this->elems_.rend();
 }
 
 template <class T>
@@ -164,7 +163,7 @@ void Stack<T>::resize(size_t t)
     }
     else
     {
-        max_size_= t;
+        max_size_ = t;
     }
 }
 
@@ -176,6 +175,4 @@ size_t Stack<T>::max_size() const
 
 template <class T>
 std::ostream& Stack<T>::operator<<(std::ostream& ostr, const Stack<T>& p)
-{
-    
-}
+{}
