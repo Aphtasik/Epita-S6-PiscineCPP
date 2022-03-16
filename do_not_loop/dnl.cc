@@ -2,12 +2,16 @@
 
 size_t min_elt_length(const std::vector<std::string>& req)
 {
-    return std::min_element(req.begin(), req.end())->size();
+    return std::min_element(req.begin(), req.end(),
+                            [](auto a, auto b) { return a.size() < b.size(); })
+        ->size();
 }
 
 size_t max_elt_length(const std::vector<std::string>& req)
 {
-    return std::max_element(req.begin(), req.end())->size();
+    return std::max_element(req.begin(), req.end(),
+                            [](auto a, auto b) { return a.size() < b.size(); })
+        ->size();
 }
 
 size_t sum_elt_length(const std::vector<std::string>& req)
@@ -24,9 +28,8 @@ size_t count_elt(const std::vector<std::string>& req, const std::string& elt)
 
 size_t count_duplicate(const std::vector<std::string>& req)
 {
-    std::vector<std::string> vec;
-    copy(req.begin(), req.end(), back_inserter(vec));
-    sort(vec.begin(), vec.end());
-    vec.erase(unique(vec.begin(), vec.end()), vec.end());
-    return vec.size();
+    std::unordered_map<std::string, int> tmp;
+    std::transform(req.begin(), req.end(), std::inserter(tmp, tmp.end()),
+                   [](const auto& c) { return std::make_pair(c, 0); });
+    return req.size() - tmp.size();
 }
