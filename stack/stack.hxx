@@ -9,7 +9,19 @@
 template <class T>
 Stack<T>::Stack(size_t max_size)
 {
-    max_size_ = max_size;
+    try
+    {
+        items_.reserve(max_size);
+        max_size_ = max_size;
+    }
+    catch (std::length_error& e)
+    {
+        throw StackCreationFailed("Max stack size is too big.");
+    }
+    catch (std::bad_alloc& e)
+    {
+        throw StackCreationFailed("Allocation failed.");
+    }
 }
 
 template <class T>
@@ -174,5 +186,7 @@ size_t Stack<T>::max_size() const
 }
 
 template <class T>
-std::ostream& Stack<T>::operator<<(std::ostream& ostr, const Stack<T>& p)
-{}
+std::ostream& operator<<(std::ostream& ostr, const Stack<T>& p)
+{
+    return p.print(ostr);
+}
