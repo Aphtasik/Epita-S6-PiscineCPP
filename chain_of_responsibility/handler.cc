@@ -15,7 +15,7 @@ void Handler::set_successor(Handler* h)
 void Handler::forward_request(int level)
 {
     if (!this->next_)
-        std::cout << "Nobody can handle this request" << '\n';
+        std::cout << "Nobody can handle this request\n";
     else
         this->next_->handle_request(level);
 }
