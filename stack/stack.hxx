@@ -146,25 +146,25 @@ std::ostream& Stack<T>::print(std::ostream& s) const
 template <typename T>
 typename std::vector<T>::const_reverse_iterator Stack<T>::begin() const
 {
-    return this->elems_.rbegin();
+    return this->items_.rbegin();
 }
 
 template <typename T>
 typename std::vector<T>::reverse_iterator Stack<T>::begin()
 {
-    return this->elems_.rbegin();
+    return this->items_.rbegin();
 }
 
 template <typename T>
 typename std::vector<T>::const_reverse_iterator Stack<T>::end() const
 {
-    return this->elems_.rend();
+    return this->items_.rend();
 }
 
 template <typename T>
 typename std::vector<T>::reverse_iterator Stack<T>::end()
 {
-    return this->elems_.rend();
+    return this->items_.rend();
 }
 
 template <class T>
