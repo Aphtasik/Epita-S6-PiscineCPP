@@ -106,7 +106,7 @@ T Stack<T>::operator[](size_t i)
 {
     try
     {
-        return items_.at(i);
+        return items_.at(items_.size() - 1 - i);
     }
     catch (std::exception& e)
     {
@@ -134,12 +134,9 @@ std::ostream& Stack<T>::print(std::ostream& s) const
     if (items_.size() == 0)
         return s;
 
-    for (int i = items_.size() - 1; i > 0; i--)
-    {
+    for (long unsigned int i = 0; i < items_.size() - 1; i++)
         s << items_.at(i) << " ";
-    }
-    s << items_.at(0);
-
+    s << items_.at(items_.size() - 1);
     return s;
 }
 
@@ -170,16 +167,20 @@ typename std::vector<T>::reverse_iterator Stack<T>::end()
 template <class T>
 void Stack<T>::resize(size_t t)
 {
-    if (t == max_size_)
-        return;
-    else if (t < max_size_)
+    while (t < items_.size())
+        this->pop();
+    max_size_ = t;
+    try
     {
-        while (max_size_ > t)
-            items_.pop_back();
+        items_.reserve(t);
     }
-    else
+    catch (std::length_error& e)
     {
-        max_size_ = t;
+        throw StackCreationFailed("Max stack size is too big.");
+    }
+    catch (std::bad_alloc& e)
+    {
+        throw StackCreationFailed("Allocation failed.");
     }
 }
 
