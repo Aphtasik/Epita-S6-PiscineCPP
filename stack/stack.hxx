@@ -32,7 +32,7 @@ Stack<T>& Stack<T>::push(const T& item)
         items_.push_back(item);
         return *this;
     }
-    catch (std::exception e)
+    catch (std::exception& e)
     {
         std::string msg = "Unable to push, stack max size reached.";
         throw StackMaxSize(msg);
@@ -47,7 +47,7 @@ Stack<T>& Stack<T>::operator+=(const T& item)
         items_.push_back(item);
         return *this;
     }
-    catch (std::exception e)
+    catch (std::exception& e)
     {
         std::string msg = "Unable to push, stack max size reached.";
         throw StackMaxSize(msg);
@@ -62,7 +62,7 @@ Stack<T>& Stack<T>::operator<<(const T& item)
         items_.push_back(item);
         return *this;
     }
-    catch (std::exception e)
+    catch (std::exception& e)
     {
         std::string msg = "Unable to push, stack max size reached.";
         throw StackMaxSize(msg);
@@ -74,10 +74,11 @@ T Stack<T>::pop()
 {
     try
     {
-        T item = items_.pop_back();
+        T item = items_.back();
+        items_.pop_back();
         return item;
     }
-    catch (std::exception e)
+    catch (std::exception& e)
     {
         std::string msg = "Unable to pop, stack is empty.";
         throw StackEmpty(msg);
@@ -89,10 +90,11 @@ T Stack<T>::operator--()
 {
     try
     {
-        T item = items_.pop_back();
+        T item = items_.back();
+        items_.pop_back();
         return item;
     }
-    catch (std::exception e)
+    catch (std::exception& e)
     {
         std::string msg = "Unable to pop, stack is empty.";
         throw StackEmpty(msg);
@@ -106,7 +108,7 @@ T Stack<T>::operator[](size_t i)
     {
         return items_.at(i);
     }
-    catch (std::exception e)
+    catch (std::exception& e)
     {
         std::string msg = "Out of range.";
         throw std::out_of_range(msg);
@@ -120,7 +122,7 @@ bool Stack<T>::operator==(Stack s1)
     {
         return max_size_ == s1.max_size_ && items_ == s1.items_;
     }
-    catch (std::exception e)
+    catch (std::exception& e)
     {
         throw std::exception(e);
     }
@@ -137,6 +139,8 @@ std::ostream& Stack<T>::print(std::ostream& s) const
         s << items_.at(i) << " ";
     }
     s << items_.at(0);
+
+    return s;
 }
 
 template <typename T>

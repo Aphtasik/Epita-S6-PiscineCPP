@@ -5,7 +5,7 @@
 class StackCreationFailed : public std::exception
 {
 public:
-    StackCreationFailed(std::string& msg);
+    StackCreationFailed(const std::string& msg);
     virtual const char* what() const noexcept;
 
 private:

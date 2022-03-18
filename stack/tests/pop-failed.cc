@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "stack.hh"
+#include "../stack.hh"
 
 int main()
 {

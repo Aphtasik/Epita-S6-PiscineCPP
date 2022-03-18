@@ -1,6 +1,6 @@
 #include "stack-creation-failed.hh"
 
-StackCreationFailed::StackCreationFailed(std::string& msg)
+StackCreationFailed::StackCreationFailed(const std::string& msg)
 {
     msg_ = msg;
 }

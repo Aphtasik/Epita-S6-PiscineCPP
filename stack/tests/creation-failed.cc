@@ -2,8 +2,8 @@
 #include <stdexcept>
 #include <vector>
 
-#include "stack-creation-failed.hh"
-#include "stack.hh"
+#include "../stack-creation-failed.hh"
+#include "../stack.hh"
 
 namespace std
 {
