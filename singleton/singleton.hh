@@ -6,20 +6,21 @@
 template <class T>
 class Singleton
 {
+public:
+    Singleton(Singleton const&) = delete;
+    Singleton(Singleton&&) = delete;
+    Singleton& operator=(Singleton&&) = delete;
+    Singleton& operator=(const Singleton&) = delete;
+
+    static T* instance()
+    {
+        static T* instance;
+        return instance;
+    }
+
 protected:
     Singleton<T>()
     {}
-
-public:
-    Singleton(Singleton const&) = delete; // copy ctor
-    Singleton(Singleton&&) = delete; // move ctor
-    Singleton& operator=(Singleton const&) = delete; // copy assignment
-    Singleton& operator=(Singleton&&) = delete;
-    static T* instance()
-    {
-        static T instance;
-        return &instance;
-    }
 };
 
 class Logger : public Singleton<Logger>
@@ -31,7 +32,7 @@ public:
     void write_to_log_file();
     void close_log_file();
 
-private:
+protected:
     Logger()
     {}
 };
