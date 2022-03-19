@@ -5,7 +5,7 @@
 class StackMaxSize : public std::exception
 {
 public:
-    StackMaxSize(std::string& msg);
+    StackMaxSize(const std::string& msg);
     virtual const char* what() const noexcept;
 
 private:

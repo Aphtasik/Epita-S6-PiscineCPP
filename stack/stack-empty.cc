@@ -1,6 +1,6 @@
 #include "stack-empty.hh"
 
-StackEmpty::StackEmpty(std::string& msg)
+StackEmpty::StackEmpty(const std::string& msg)
 {
     msg_ = msg;
 }

@@ -27,78 +27,48 @@ Stack<T>::Stack(size_t max_size)
 template <class T>
 Stack<T>& Stack<T>::push(const T& item)
 {
-    try
-    {
-        items_.push_back(item);
-        return *this;
-    }
-    catch (std::exception& e)
-    {
-        std::string msg = "Unable to push, stack max size reached.";
-        throw StackMaxSize(msg);
-    }
+    if (items_.size() == max_size_)
+        throw StackMaxSize("Unable to push, stack max size reached.");
+    this->items_.push_back(item);
+    return *this;
 }
 
 template <class T>
 Stack<T>& Stack<T>::operator+=(const T& item)
 {
-    try
-    {
-        items_.push_back(item);
-        return *this;
-    }
-    catch (std::exception& e)
-    {
-        std::string msg = "Unable to push, stack max size reached.";
-        throw StackMaxSize(msg);
-    }
+    if (items_.size() == max_size_)
+        throw StackMaxSize("Unable to push, stack max size reached.");
+    this->items_.push_back(item);
+    return *this;
 }
 
 template <class T>
 Stack<T>& Stack<T>::operator<<(const T& item)
 {
-    try
-    {
-        items_.push_back(item);
-        return *this;
-    }
-    catch (std::exception& e)
-    {
-        std::string msg = "Unable to push, stack max size reached.";
-        throw StackMaxSize(msg);
-    }
+    if (items_.size() == max_size_)
+        throw StackMaxSize("Unable to push, stack max size reached.");
+    this->items_.push_back(item);
+    return *this;
 }
 
 template <class T>
 T Stack<T>::pop()
 {
-    try
-    {
-        T item = items_.back();
-        items_.pop_back();
-        return item;
-    }
-    catch (std::exception& e)
-    {
-        std::string msg = "Unable to pop, stack is empty.";
-        throw StackEmpty(msg);
-    }
+    if (items_.size() == 0)
+        throw StackEmpty("Unable to pop, stack is empty.");
+    T elt = items_.back();
+    items_.pop_back();
+    return elt;
 }
 
 template <class T>
 T Stack<T>::operator--()
 {
-    try
-    {
-        T item = items_.back();
-        items_.pop_back();
-        return item;
-    }
-    catch (std::exception& e)
-    {
-        std::string msg = "Unable to pop, stack is empty.";
-        throw StackEmpty(msg);
-    }
+    if (items_.size() == 0)
+        throw StackEmpty("Unable to pop, stack is empty.");
+    T elt = items_.back();
+    items_.pop_back();
+    return elt;
 }
 
 template <class T>

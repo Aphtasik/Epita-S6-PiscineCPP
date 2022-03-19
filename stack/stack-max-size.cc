@@ -1,6 +1,6 @@
 #include "stack-max-size.hh"
 
-StackMaxSize::StackMaxSize(std::string& msg)
+StackMaxSize::StackMaxSize(const std::string& msg)
 {
     msg_ = msg;
 }
