@@ -13,12 +13,11 @@ DirectoryInfo* read_info(std::ifstream& file)
     unsigned int size, rights;
 
     std::getline(file, line);
-    std::stringstream ss;
-    ss.str(line);
+    std::stringstream ss(line);
 
     if (!(ss >> name >> std::dec >> size >> std::oct >> rights >> owner))
         return nullptr;
-    if (file.peek() == '\n' || !file.eof())
+    if (!file.eof())
         return nullptr;
 
     return new DirectoryInfo(name, size, rights, owner);
